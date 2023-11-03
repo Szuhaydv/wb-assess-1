@@ -37,6 +37,7 @@ function extend(originalArray, additionalItems) {
       originalArray.push(item)
     }
   }
+  return originalArray
 }
 
 // Return an array of all items with the given length.
@@ -50,6 +51,7 @@ function itemsWithLength(items, length) {
       newArr.push(item)
     }
   }
+  return newArr
 }
 
 // Return an array with every other element from the input array (start with index 0).
@@ -77,6 +79,7 @@ function findWordsStartingWith(words, letter) {
       newArr.push(i)
     }
   }
+  return newArr
 }
 
 // Return the `n` smallest values in the array in descending order (largest
@@ -97,8 +100,9 @@ function smallestNItems(items, n) {
       }
     }
     newArr.unshift(smallestNum)
-    items.splice(j,1)
+    items.splice(delIndex,1)
   }
+  return newArr
 }
 
 // Search for a value in the array and return its index. If the value appears

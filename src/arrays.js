@@ -89,18 +89,22 @@ function findWordsStartingWith(words, letter) {
 //   smallestNItems([1, 30, 4, 21, 100000], 3);
 //   => [21, 4, 1]
 function smallestNItems(items, n) {
-  const newArr = []
-  let smallestNum = items[0]
-  let delIndex = 0
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < items.length; j++) {
-      if (items[j] < smallestNum) {
-        smallestNum = items
-        delIndex = j
+  const findSmallest = (arr) => {
+    let smallest = arr[0]
+    let index = 0
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] < smallest) {
+        smallest = arr[i]
+        index = i
       }
     }
-    newArr.unshift(smallestNum)
-    items.splice(delIndex,1)
+    return [smallest, index]
+  }
+
+  const newArr = []
+  for (let i = 0; i < n; i++) {
+    newArr.unshift(findSmallest(items)[0])
+    items.splice(findSmallest(items)[1],1)
   }
   return newArr
 }

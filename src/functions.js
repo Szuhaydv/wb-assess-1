@@ -23,7 +23,7 @@ function average(x, y) {
 //   approximatelyEqual(10.001, 10);
 //   => true
 function approximatelyEqual(x, y) {
-  if (x - y === 0.001 || y - x === 0.001) {
+  if (Math.abs(x-y) >= 0 || Math.abs(x-y) <= 0.001) {
     return true
   }
   return false
@@ -43,7 +43,7 @@ function fullName(firstName, lastName) {
 //   generateSentence('Kay', 'coffee', 'the local cafe');
 //   => 'Kay was drinking coffee at the local cafe.'
 function generateSentence(person, beverage, location) {
-  return person + " was drinking " + beverage + " at " + location
+  return person + " was drinking " + beverage + " at " + location + "."
 }
 
 // Return the given string with all vowels replced with '*' characters.
@@ -51,9 +51,9 @@ function generateSentence(person, beverage, location) {
 //   censorVowels('javascript');
 //   => 'j*v*scr*pt'
 function censorVowels(string) {
-  const newString = ""
+  let newString = ""
   for (let letter of string) {
-    if (letter === a || e || i || o || u) {
+    if (letter === "a" || letter === "e" || letter === "i" || letter === "o" || letter === "u") {
       newString = newString + '*'
     } else {
       newString = newString + letter
@@ -67,7 +67,7 @@ function censorVowels(string) {
 //   stickyCase('hello world');
 //   => 'hElLo wOrLd'
 function stickyCase(string) {
-  const newString = ""
+  let newString = ""
   for (let i = 0; i < string.length; i++) {
     if (i % 2 === 1) {
       newString = newString + string[i].toUpperCase()
@@ -90,7 +90,34 @@ function stickyCase(string) {
 // Ex.:
 //   leetspeak('javascript');
 //   => 'j4v45cr1p7'
-function leetspeak(string) {}
+function leetspeak(string) {
+  let newString = ""
+  for (let letter of string) {
+    switch (letter) {
+      case "a":
+        newString = newString + "4"
+        break
+      case "e":
+        newString = newString + "3"
+        break
+      case "i":
+        newString = newString + "1"
+        break
+      case "o":
+        newString = newString + "0"
+        break
+      case "s":
+        newString = newString + "5"
+        break
+      case "t":
+        newString = newString + "7"
+        break
+      default:
+        newString = newString + letter
+    }
+  }
+  return newString
+}
 
 export {
   approximatelyEqual,
